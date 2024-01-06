@@ -27,4 +27,34 @@ export default function RegisterPage() {
       setLoading(false);
     }
   };
+
+  return (
+    <form className="form-login" onSubmit={handleRegister}>
+      <input
+        type="text"
+        placeholder="Identifiant"
+        className="input-field"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password" 
+        placeholder="Mot de passe"
+        className="input-field"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button className="connexion-button" type="submit" disabled={loading}>
+        {loading ? 'Chargement...' : 'S\'inscrire'}
+      </button>
+      {error && <div className="error-message">{error}</div>}
+      {success ? (
+        <div className="success-message">
+          <p>Inscription réussie, vous pouvez à présent vous <a href="/login">connecter</a></p>
+        </div>
+      ) : (
+        <p>Vous avez déjà un compte ? <a href="/login">Se connecter</a></p>
+      )}
+    </form>
+  );
 }
