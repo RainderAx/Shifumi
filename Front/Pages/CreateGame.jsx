@@ -1,16 +1,9 @@
-
-
-const CreateAGame = () => {
-    const [history, setHistory] = useState([]);
-    const [creatingGame, setCreatingGame] = useState(false);
-    const user = ;
-    
+export default function CreateAGame() {
     const handleCreateGame = async () => {
       try {
         const newGame = await addGame();
         console.log("Game créé avec succès:", newGame);
         setCreatingGame(true);
-        setHistory((prevHistory) => [...prevHistory, newGame]);
       } catch (error) {
         console.error("Erreur lors de la création du game:", error);
       }
@@ -19,7 +12,7 @@ const CreateAGame = () => {
     useEffect(() => {
       if (creatingGame) {
         setCreatingGame(false);
-     
+        fetchGames();
       }
     }, [creatingGame]);
   
@@ -38,20 +31,7 @@ const CreateAGame = () => {
             <GameList />
           </GameListProvider>
         </div>
-        <div>
-          <h2>Historique des parties :</h2>
-          <ul>
-            {history.map((game) => (
-              <li key={game.id}>
-                {/* Affichez les détails de chaque partie comme vous le souhaitez */}
-                {game.date} - {game.result}
-              </li>
-            ))}
-          </ul>
-        </div>
       </>
     );
-  };
-  
-  export default CreateAGame;
+  }
   
