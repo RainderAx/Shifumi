@@ -3,7 +3,6 @@
 const CreateAGame = () => {
     const [history, setHistory] = useState([]);
     const [creatingGame, setCreatingGame] = useState(false);
-    const user = ;
     
     const handleCreateGame = async () => {
       try {
