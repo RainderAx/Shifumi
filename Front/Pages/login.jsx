@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import RegisterPage from '../Pages/RegisterPage'
 
 const Login = () => {
   const [username, setUsername] = useState('');
