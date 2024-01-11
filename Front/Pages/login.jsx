@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import RegisterPage from '../Pages/RegisterPage'
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -19,6 +21,8 @@ const Login = () => {
     e.preventDefault();
 
     // Vérifier les informations de connexion
+
+    // connexion avec la db du prof pour la co
     if (username === 'admin' && password === 'password') {
       console.log('Connexion réussie');
       
@@ -55,6 +59,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <a href="./RegisterPage">Create an account</a>
     </div>
   );
 

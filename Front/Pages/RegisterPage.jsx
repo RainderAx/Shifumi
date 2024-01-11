@@ -1,60 +1,63 @@
-import React, { useState } from 'react';
-import { useUser, registerUser, saveTokenToLocalStorage } from 'path-to-your-user-module';
+import { useState } from 'react';
 
-export default function RegisterPage() {
-  const { dispatch, setUser } = useUser();
+const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRegister = async (e) => {
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError(null);
-    setSuccess(false);
-    setLoading(true);
 
-    try {
-      const token = await registerUser(username, password);
-      saveTokenToLocalStorage(token);
-      setUser(dispatch, { username, token });
-      setSuccess(true);
-    } catch (error) {
-      console.error('Register error:', error);
-      setError('Une erreur s\'est produite lors de l\'inscription. Veuillez réessayer.');
-    } finally {
-      setLoading(false);
+    // Vérifier si les mots de passe correspondent
+    if (password !== confirmPassword) {
+      alert("Les mots de passe ne correspondent pas");
+      return;
     }
+
+    // Envoyer les données d'inscription au serveur
+    // Remplacez cette partie avec votre propre logique d'inscription
+
+    console.log("Nom d'utilisateur:", username);
+    console.log("Mot de passe:", password);
+
+    // Réinitialiser les champs du formulaire
+    setUsername('');
+    setPassword('');
+    setConfirmPassword('');
   };
 
   return (
-    <form className="form-login" onSubmit={handleRegister}>
-      <input
-        type="text"
-        placeholder="Identifiant"
-        className="input-field"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password" 
-        placeholder="Mot de passe"
-        className="input-field"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button className="connexion-button" type="submit" disabled={loading}>
-        {loading ? 'Chargement...' : 'S\'inscrire'}
-      </button>
-      {error && <div className="error-message">{error}</div>}
-      {success ? (
-        <div className="success-message">
-          <p>Inscription réussie, vous pouvez à présent vous <a href="/login">connecter</a></p>
+    <div>
+      <h2>Créer un compte</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Username :</label>
+          <input type="text" value={username} onChange={handleUsernameChange} />
         </div>
-      ) : (
-        <p>Vous avez déjà un compte ? <a href="/login">Se connecter</a></p>
-      )}
-    </form>
+        <div>
+          <label>Mot de passe:</label>
+          <input type="password" value={password} onChange={handlePasswordChange} />
+        </div>
+        <div>
+          <label>Confirmer le mot de passe:</label>
+          <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
-}
+};
+
+export default RegisterPage;
