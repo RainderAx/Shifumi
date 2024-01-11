@@ -1,8 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
-
-
-
 import './Components&Style/HomePage.css';
+import { ButtonBase } from './Components&Style/Button';
 
 const handleRedirect = () => {
   window.location.href = "https://www.karminecorp.fr/shop";
@@ -15,8 +12,15 @@ const TestPage = () => {
     
     <div>
        <h1>C'est la maison du content</h1>
-       <button onClick={handleRedirect} >Nah I'd Win</button>
-       <button className='main-button'><a href="/login" className='link-button-play'>Jouer</a></button>
+       <ButtonBase onClick={handleRedirect}>Nah I'd Win</ButtonBase>
+
+       <ButtonBase variant="link">
+        <a href="/login" className='link-button-play'>Les Logs</a>
+       </ButtonBase>
+
+       <ButtonBase variant="main">
+        <a href="/CreateGame" className='link-button-play'>Jouer</a>
+       </ButtonBase>
        
     </div>
     
