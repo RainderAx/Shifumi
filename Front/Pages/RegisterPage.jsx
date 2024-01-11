@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+
+import './Components&Style/RegisterPages.css';
+
+
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,6 +21,7 @@ const RegisterPage = () => {
     setConfirmPassword(e.target.value);
   };
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
