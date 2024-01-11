@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../src/components/Api/Login-user';
 
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   // Fonction pour gérer le changement de l'input username
   const handleUsernameChange = (e) => {
@@ -16,22 +20,24 @@ const Login = () => {
   };
 
   // Fonction pour gérer la soumission du formulaire
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Vérifier les informations de connexion
-
-    // connexion avec la db du prof pour la co
-    if (username === 'admin' && password === 'password') {
-      console.log('Connexion réussie');
+  
+    try {
+      const token= await loginUser(username, password);
+      if (token) {
+        console.log('Connexion réussie');
+        navigate('/');
+      }
       
-    } else {
-      console.log('Identifiant ou mot de passe incorrect');
-      setError('Identifiant ou mot de passe incorrect'); 
+
+    } catch (error) {
+      console.error("login error :", error);
+      setError('Identifiant ou mot de passe incorrect');
     }
   };
 
-  const [error, setError] = useState('');
+  
 
   return (
     <div>

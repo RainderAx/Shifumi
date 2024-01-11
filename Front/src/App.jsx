@@ -11,7 +11,6 @@ function App() {
     <>
       <Router>
       <div>
-        <Link to="/login">Go to Login</Link>
              
      {/* Permet de naviguer entre les différentes pages */}   
         <Routes>

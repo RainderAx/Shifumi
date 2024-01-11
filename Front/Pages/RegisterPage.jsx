@@ -1,13 +1,16 @@
 import { useState } from 'react';
-
-
+import { registerUser } from '../src/components/Api/Register-user';
+import { useNavigate } from 'react-router-dom';
 import './Components&Style/RegisterPages.css';
 
-
 const RegisterPage = () => {
+
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [accountCreated, setAccountCreated] = useState(false);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -21,48 +24,52 @@ const RegisterPage = () => {
     setConfirmPassword(e.target.value);
   };
 
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Vérifier si les mots de passe correspondent
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     if (password !== confirmPassword) {
-      alert("Les mots de passe ne correspondent pas");
+      setErrorMessage('Les mots de passe ne correspondent pas');
       return;
     }
+    try {
+      const token = await registerUser(username, password);
+      if (token) {
+        console.log('Connexion réussie, redirection vers la page de connexion');
+        setAccountCreated(true);
+        navigate('/login');
 
-    // Envoyer les données d'inscription au serveur
-    // Remplacez cette partie avec votre propre logique d'inscription
-
-    console.log("Nom d'utilisateur:", username);
-    console.log("Mot de passe:", password);
-
-    // Réinitialiser les champs du formulaire
-    setUsername('');
-    setPassword('');
-    setConfirmPassword('');
+      }
+    } catch (error) {
+      console.error('Une erreur est survenue lors de l\'inscription', error);
+      setErrorMessage('Une erreur est survenue lors de l\'inscription');
+    }
   };
 
   return (
     <div>
       <h2>Créer un compte</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username :</label>
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </div>
-        <div>
-          <label>Mot de passe:</label>
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </div>
-        <div>
-          <label>Confirmer le mot de passe:</label>
-          <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
-        </div>
-        <button type="submit">Register</button>
-      </form>
+      {errorMessage && <p>{errorMessage}</p>}
+      {accountCreated ? (
+        <p>Votre compte a été créé avec succès!</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Username :</label>
+            <input type="text" value={username} onChange={handleUsernameChange} />
+          </div>
+          <div>
+            <label>Mot de passe:</label>
+            <input type="password" value={password} onChange={handlePasswordChange} />
+          </div>
+          <div>
+            <label>Confirmer le mot de passe:</label>
+            <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+          </div>
+          <button type="submit">Register</button>
+        </form>
+      )}
     </div>
   );
 };
 
 export default RegisterPage;
+
