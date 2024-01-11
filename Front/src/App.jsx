@@ -11,11 +11,11 @@ function App() {
     <>
       <Router>
       <div>
-        <Link to="/login">Go to Login</Link>
+        
              
      {/* Permet de naviguer entre les différentes pages */}   
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/RegisterPage" element={<RegisterPage />} />
         </Routes>
