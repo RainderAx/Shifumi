@@ -32,12 +32,14 @@ const RegisterPage = () => {
     }
     try {
       const token = await registerUser(username, password);
-      if (token) {
-        console.log('Connexion réussie, redirection vers la page de connexion');
-        setAccountCreated(true);
-        navigate('/login');
+      console.log('Token :', token);
+      console.log('Connexion réussie, redirection vers la page de connexion');
+      setAccountCreated(true);
+      navigate('/login');
 
-      }
+      
+
+      
     } catch (error) {
       console.error('Une erreur est survenue lors de l\'inscription', error);
       setErrorMessage('Une erreur est survenue lors de l\'inscription');

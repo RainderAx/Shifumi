@@ -10,9 +10,13 @@ export const registerUser = async (username, password) => {
         },
         body: JSON.stringify({ id_: idUser, username, password }),
       });
+      console.log('Response: ',response);
   
       if (response.ok) {
         const data = await response.json();
+
+        console.log('Data: ',data);
+        
         return data.token;
       } else {
         const message = `Register failed with status ${response.status} and message ${await response.text()}`;
