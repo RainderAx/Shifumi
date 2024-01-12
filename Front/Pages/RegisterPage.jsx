@@ -66,7 +66,7 @@ const RegisterPage = () => {
             <label>Confirmer le mot de passe:</label>
             <input type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
           </div>
-          <button type="submit">Register</button>
+          <button className='btn' type="submit">Register</button>
         </form>
       )}
     </div>

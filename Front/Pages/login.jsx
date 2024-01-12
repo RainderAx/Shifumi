@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../src/components/Api/Login-user';
-import { ButtonBase } from './Components&Style/Button';
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -22,7 +22,7 @@ const Login = () => {
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
       const token = await loginUser(username, password);
       if (token) {
@@ -58,7 +58,7 @@ const Login = () => {
             onChange={handlePasswordChange}
           />
         </div>
-        <button type="submit">Login</button>
+        <button className='btn' type="submit">Login</button>
       </form>
       <a href="./RegisterPage">Create an account</a>
     </div>
