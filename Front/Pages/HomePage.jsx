@@ -1,13 +1,12 @@
 import './Components&Style/HomePage.css';
 import { ButtonBase } from './Components&Style/Button';
-import Header from './Components&Style/Header';
-import Footer from './Components&Style/Footer';
+
 
 const TestPage = () => {
 
 
   return <>
-    <Header/>
+    
     <div>
        
        <h1>C'est la maison du content</h1>
@@ -17,7 +16,7 @@ const TestPage = () => {
        </ButtonBase>
       
     </div>
-    <Footer/>
+    
   </>;
 };
 
