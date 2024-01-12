@@ -1,4 +1,3 @@
-import React from 'react';
 import './Header.css';
 import { ButtonBase } from './Button';
 
@@ -20,5 +19,5 @@ export default function Header() {
       </div>
     </>
   );
-};
+}
 

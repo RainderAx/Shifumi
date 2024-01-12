@@ -1,3 +1,4 @@
+import { keepTokenAndUsername } from "./Local-token";
 
 export const loginUser = async (username, password) => {
     try {
@@ -11,7 +12,7 @@ export const loginUser = async (username, password) => {
   
       if (response.ok) {
         const data = await response.json();
-        saveTokenAndUsernameToLocalStorage(data.token, username);
+        keepTokenAndUsername(data.token, username);
         return data.token;
       } else {
         throw new Error('Login failed');
@@ -22,7 +23,3 @@ export const loginUser = async (username, password) => {
     }
 };
 
-const saveTokenAndUsernameToLocalStorage = (token, username) => {
-  localStorage.setItem('userToken', token);
-  localStorage.setItem('username', username);
-};
