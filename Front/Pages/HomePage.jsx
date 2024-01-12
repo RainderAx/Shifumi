@@ -6,8 +6,7 @@ const TestPage = () => {
 
 
   return <>
-    
-    <div>
+    <div className='container'>
        
        <h1>C'est la maison du content</h1>
     

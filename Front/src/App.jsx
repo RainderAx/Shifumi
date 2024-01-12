@@ -13,8 +13,8 @@ function App() {
     <>
 
       <Router>
-       <Header/>
-      <div>
+      <Header/>
+      <div className='container'>
              
      {/* Permet de naviguer entre les différentes pages */}   
         <Routes>
