@@ -59,6 +59,7 @@ export function ButtonBase({
           border: "none",
           cursor: "pointer",
           transition: "color 0.3s ease-in-out",
+          right: "10px",
         };
 
       default:

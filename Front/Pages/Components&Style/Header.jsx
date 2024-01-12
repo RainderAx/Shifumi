@@ -11,8 +11,11 @@ export default function Header() {
     <>
       <div className="header">
         <div className="links">
-          <ButtonBase  variant ="link" onClick={handleRedirect}>Nah I'd Win</ButtonBase>
+          <ButtonBase  variant ="Idwin" onClick={handleRedirect}>Nah I'd Win</ButtonBase>
           <ButtonBase variant="link"><a href="/" >Accueil</a></ButtonBase>
+          <ButtonBase variant="link">
+                <a href="/login">Les Logs</a>
+          </ButtonBase>
         </div>
       </div>
     </>

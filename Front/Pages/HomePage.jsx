@@ -12,10 +12,6 @@ const TestPage = () => {
        
        <h1>C'est la maison du content</h1>
     
-       <ButtonBase variant="link">
-        <a href="/login" className='link-button-play'>Les Logs</a>
-       </ButtonBase>
-
        <ButtonBase variant="main">
         <a href="/CreateGame" className='link-button-play'>Jouer</a>
        </ButtonBase>
