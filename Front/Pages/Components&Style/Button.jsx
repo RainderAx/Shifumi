@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function ButtonBase({
   variant = "classic",
   title = "",
@@ -12,9 +10,7 @@ export function ButtonBase({
     backgroundColor: "white",
     display: "flex",
     alignItems: "center",
-    ':hover': {
-      backgroundColor: '#039be5',
-    },
+
     ...style,
   };
 
@@ -61,7 +57,19 @@ export function ButtonBase({
           transition: "color 0.3s ease-in-out",
           right: "10px",
         };
+      
 
+      case "round":
+        return {
+            borderRadius: "50%",
+            width: "60px",
+            height: "60px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          };
+              
       default:
         return {};
     }
