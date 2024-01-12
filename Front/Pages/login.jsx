@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../src/components/Api/Login-user';
 
-
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,27 +21,23 @@ const Login = () => {
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-      const token= await loginUser(username, password);
+      const token = await loginUser(username, password);
       if (token) {
         console.log('Connexion réussie');
         navigate('/');
       }
-      
-
     } catch (error) {
       console.error("login error :", error);
-      setError('Identifiant ou mot de passe incorrect');
+      setError('Pas le bon réessaie');
     }
   };
-
-  
 
   return (
     <div>
       <h2>Login</h2>
-      {error && <p>{error}</p>} {"erreur de message, pas le bon mdp pd"}
+      {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
@@ -67,6 +62,6 @@ const Login = () => {
       <a href="./RegisterPage">Create an account</a>
     </div>
   );
+};
 
-}
 export default Login;
