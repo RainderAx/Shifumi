@@ -5,7 +5,7 @@ import RegisterPage from '../Pages/RegisterPage';
 import HomePage from '../Pages/HomePage';
 import Header from '../Pages/Components&Style/Header';
 import Footer from '../Pages/Components&Style/Footer';
-
+import { HistContent } from '../Pages/hist';
 
 function App() {
 
@@ -19,8 +19,9 @@ function App() {
      {/* Permet de naviguer entre les différentes pages */}   
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="/RegisterPage" element={<RegisterPage />} />
+          <Route path="/Matches" element={<HistContent />} />
         </Routes>
       </div>
       <Footer/>

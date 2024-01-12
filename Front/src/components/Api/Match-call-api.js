@@ -13,7 +13,7 @@ async function request(url, options) {
   return data;
 }
 
-export default {
+export const MatchActions ={
   fetch: function () {
     return request(BASE_URL, { headers });
   },

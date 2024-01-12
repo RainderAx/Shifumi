@@ -11,7 +11,7 @@ const TestPage = () => {
        <h1>C'est la maison du content</h1>
     
        <ButtonBase variant="main">
-        <a href="/CreateGame" className='link-button-play'>Jouer</a>
+        <a href="/" className='link-button-play'>Jouer</a>
        </ButtonBase>
       
     </div>
