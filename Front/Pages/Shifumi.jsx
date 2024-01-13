@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import TopImages from './Item';
 import GameItem from './Item';
 import { useParams } from 'react-router-dom';
+import './Components&Style/Style.css';
 
 const Shifumi = () => {
   const { id } = useParams();
@@ -79,7 +80,7 @@ const Shifumi = () => {
   }, []);
 
   if (loading) {
-    return <div>Waiting for player...</div>;
+    return <div className='wait'>Waiting for player...</div>;
   }
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Components&Style/HomePage.css';
+import './Components&Style/Style.css';
 import { ButtonBase } from './Components&Style/Button';
 import luffy from '../src/assets/luffy.png';
 import naruto from '../src/assets/naruto.png';
