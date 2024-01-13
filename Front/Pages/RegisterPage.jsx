@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { registerUser } from '../src/components/Api/Register-user';
+import { registerUser } from '../user-fetch';
 import { useNavigate } from 'react-router-dom';
 import './Components&Style/RegisterPages.css';
 
