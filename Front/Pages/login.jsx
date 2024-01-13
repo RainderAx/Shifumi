@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser} from '../src/components/Api/Login-user';
+import { loginUser} from from '../user-fetch';
 
 
 const Login = () => {
