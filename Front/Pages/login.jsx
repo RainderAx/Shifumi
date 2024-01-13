@@ -26,9 +26,9 @@ const Login = () => {
     try {
       const response = await loginUser(username, password);
       if (response.status === 'success') {
-        window.localStorage.setItem('token', response.status);
+        window.localStorage.setItem('userToken', response.status);
         console.log('Connexion réussie');
-        navigate('/');
+        navigate('/match');
       }
     } catch (error) {
       console.error("login error :", error);

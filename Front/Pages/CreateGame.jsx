@@ -1,6 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const matchlist = {
+  fetch: async function () {
+    const token = localStorage.getItem("userToken");
+    return await fetch("http://fauques.freeboxos.fr:3000/matches", {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    }).then((response) => response.json());
+  },
+
+  add: async function (match) {
+    const token = localStorage.getItem("userToken");
+    const response = await fetch("http://fauques.freeboxos.fr:3000/matches/", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(match),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data ? data._id : null;
+  },
+
+  join: async function (matchId, playerId) {
+    const token = localStorage.getItem("userToken");
+    const response = await fetch(`http://fauques.freeboxos.fr:3000/matches/${matchId}/join`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify({ playerId }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  },
+};
 
 
 function Match() {
@@ -48,7 +95,7 @@ function Match() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('userToken');
+    localStorage.removeItem('token');
     localStorage.removeItem('username');
     navigate('/login');
   };

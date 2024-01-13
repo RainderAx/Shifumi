@@ -32,7 +32,7 @@ const RegisterPage = () => {
     }
     try {
       const token = await registerUser(username, password);
-      console.log('Token :', token);
+      console.log('userToken :', token);
       console.log('Connexion réussie, redirection vers la page de connexion');
       setAccountCreated(true);
       navigate('/login');

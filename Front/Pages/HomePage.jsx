@@ -19,7 +19,7 @@ const TestPage = () => {
 
 //token verification
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const storedToken = window.localStorage.getItem('token'); 
+  const storedToken = window.localStorage.getItem('userToken'); 
   useEffect(() => {
     checkLoginStatus();
   }, []);  
@@ -54,20 +54,26 @@ const TestPage = () => {
         </h1>
       </div>
 
-      <div className='animation'>
-          {!isLoggedIn && (
-            <ButtonBase variant='main'onClick={handleLogin}>
+      <div className='animation'>     
+        <ButtonBase variant='main'onClick={handleLogin}>
+            <a href='/Login'>Login</a>
+        </ButtonBase>
+      </div>
+
+    {/* <div className='animation'>
+        {//!isLoggedIn && (
+            <ButtonBase variant='main' onClick={handleLogin}>
                 <a href='/Login'>Login</a>
             </ButtonBase>
-          )}
+        )}
 
-          {isLoggedIn && (
-            <ButtonBase variant='main' onClick={handleLogin} >
+        {isLoggedIn && (
+            <ButtonBase variant='main' onClick={handleLogin}>
                 <a href='/match'>Jouer</a>
             </ButtonBase>
-          )}
-      </div>
-      
+        )}
+    </div> */}
+
       <div className='regles'>
         {GameRules.map((rule, index) => (
           <div key={index}>
