@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../src/components/Api/Login-user';
+import { loginUser} from '../user-fetch';
 
 
 const Login = () => {
@@ -24,9 +24,9 @@ const Login = () => {
     e.preventDefault();
     
     try {
-      const token = await loginUser(username, password);
-      if (token) {
-        window.localStorage.setItem('token', token);
+      const response = await loginUser(username, password);
+      if (response.status === 'success') {
+        window.localStorage.setItem('token', response.status);
         console.log('Connexion réussie');
         navigate('/');
       }
@@ -41,6 +41,8 @@ const Login = () => {
       <h2>Login</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
+
+
         <div>
           <label htmlFor="username">Username:</label>
           <input
@@ -50,6 +52,8 @@ const Login = () => {
             onChange={handleUsernameChange}
           />
         </div>
+
+        
         <div>
           <label htmlFor="password">Password:</label>
           <input
