@@ -63,7 +63,7 @@ const TestPage = () => {
 
           {isLoggedIn && (
             <ButtonBase variant='main' onClick={handleLogin} >
-                <a href='/Matches'>Jouer</a>
+                <a href='/match'>Jouer</a>
             </ButtonBase>
           )}
       </div>

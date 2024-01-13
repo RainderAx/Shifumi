@@ -6,6 +6,7 @@ import HomePage from '../Pages/HomePage';
 import Header from '../Pages/Components&Style/Header';
 import Footer from '../Pages/Components&Style/Footer';
 import { HistContent } from '../Pages/hist';
+import Match from '../Pages/CreateGame'
 
 function App() {
 
@@ -21,7 +22,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/RegisterPage" element={<RegisterPage />} />
-          <Route path="/Matches" element={<HistContent />} />
+          <Route path='/Match' element={<Match />} />
+          <Route path="/Hist" element={<HistContent />} />
         </Routes>
       </div>
       <Footer/>

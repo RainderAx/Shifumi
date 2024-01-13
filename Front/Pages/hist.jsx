@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import MatchListProvider, {MatchListContext} from '../src/components/Contexts/MatchConditions';
-import List  from '../src/components/Matches/List';
+
 
 function HistContent({matches: matchesprop}) {
   const { matches, fetchMatches } = useContext(MatchListContext);
