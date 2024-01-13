@@ -35,11 +35,7 @@ const RegisterPage = () => {
       console.log('userToken :', token);
       console.log('Connexion réussie, redirection vers la page de connexion');
       setAccountCreated(true);
-      navigate('/login');
-
-      
-
-      
+      navigate('/login');     
     } catch (error) {
       console.error('Une erreur est survenue lors de l\'inscription', error);
       setErrorMessage('Une erreur est survenue lors de l\'inscription');

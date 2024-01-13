@@ -7,6 +7,7 @@ import Header from '../Pages/Components&Style/Header';
 import Footer from '../Pages/Components&Style/Footer';
 import { HistContent } from '../Pages/hist';
 import Match from '../Pages/CreateGame'
+import Shifumi from '../Pages/Shifumi';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/RegisterPage" element={<RegisterPage />} />
           <Route path='/Match' element={<Match />} />
           <Route path="/Hist" element={<HistContent />} />
+          <Route path='/Shifumi' element={<Shifumi />} />
         </Routes>
       </div>
       <Footer/>
