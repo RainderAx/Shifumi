@@ -1,4 +1,4 @@
-export default function CreateAGame() {
+/*export default function CreateAGame() {
     const handleCreateGame = async () => {
       try {
         const newGame = await addGame();
@@ -34,4 +34,4 @@ export default function CreateAGame() {
       </>
     );
   }
-  
+  */

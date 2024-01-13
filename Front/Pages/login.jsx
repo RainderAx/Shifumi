@@ -26,6 +26,7 @@ const Login = () => {
     try {
       const token = await loginUser(username, password);
       if (token) {
+        window.localStorage.setItem('token', token);
         console.log('Connexion réussie');
         navigate('/');
       }

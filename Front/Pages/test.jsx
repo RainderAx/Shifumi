@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Components&Style/HomePage.css';
 import { ButtonBase } from './Components&Style/Button';
 import luffy from '../src/assets/luffy.png';
@@ -8,29 +8,27 @@ import goku from '../src/assets/goku.png';
 const TestPage = () => {
   const [texte, setTexte] = useState('ShifumiGame');
 
-
-//animation h1
   const changerTexteAuSurvole = () => {
     setTexte("C'est la maison du content");
   };
+  useEffect(() => {
+    
+    const storedToken = window.localStorage.getItem('token')});
+
   const reinitialiserTexte = () => {
     setTexte('ShifumiGame');
   };
 
-//token verification
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const storedToken = window.localStorage.getItem('token'); 
-  useEffect(() => {
-    checkLoginStatus();
-  }, []);  
+
   const checkLoginStatus = async () => {
     try {
-      console.log("Vérification du statut de connexion...");
-      if (storedToken) {
+      const token = await loginUser();
+      if (token) {
         setIsLoggedIn(true);
       }
     } catch (error) {
-      console.error("Erreur de connexion :", error);
+      console.error("login error :", error);
       setIsLoggedIn(false);
     }
   };
@@ -39,7 +37,6 @@ const TestPage = () => {
     checkLoginStatus();
   };
 
-//les logos
   const GameRules = [
     { logo: goku, title: 'Goku', description: 'Goku bat Luffy' },
     { logo: luffy, title: 'Luffy', description: 'Luffy bat Naruto' },
@@ -62,7 +59,7 @@ const TestPage = () => {
           )}
 
           {isLoggedIn && (
-            <ButtonBase variant='main' onClick={handleLogin} >
+            <ButtonBase variant='main' onClick={handleLogin}>
                 <a href='/Matches'>Jouer</a>
             </ButtonBase>
           )}
